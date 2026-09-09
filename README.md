@@ -305,7 +305,7 @@ This project is intended for personal portfolio use.
 
 You are free to customize the content, colors, projects, links, and functionality to represent your own personal brand.
 
-Live Link Here: ttps://bellord10.github.io/BeautifulPortfolio_By_SharmaineTupas/
+Live Link Here: https://bellord10.github.io/BeautifulPortfolio_By_SharmaineTupas/
 
 💗 Made With
 
