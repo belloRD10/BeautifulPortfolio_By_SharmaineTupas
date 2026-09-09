@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meril — Programmer Portfolio</title>
+  <meta name="description" content="Portfolio website for Meril, a programmer focused on clean code and delightful experiences." />
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=General+Sans:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['General Sans', 'Inter', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            ink: {
+              50: '#F7F7FB',
+              100: '#EEEFF7',
+              200: '#D8DCF0',
+              300: '#B7BFE2',
+              400: '#8D98CD',
+              500: '#6F78B6',
+              600: '#545D9B',
+              700: '#424A7C',
+              800: '#2E3457',
+              900: '#1E2238'
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,0.12)',
+            glow: '0 10px 30px rgba(99,102,241,0.35)'
+          },
+          backdropBlur: {
+            xs: '2px'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Subtle animated gradient background */
+    .animated-gradient {
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(99,102,241,.25), transparent 60%),
+                  radial-gradient(900px 500px at 90% 20%, rgba(236,72,153,.18), transparent 60%),
+                  radial-gradient(1000px 600px at 50% 100%, rgba(34,197,94,.18), transparent 60%),
+                  linear-gradient(180deg, #0b1022 0%, #0d0f22 30%, #0b0f1c 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .floaty {
+      animation: floaty 9s ease-in-out infinite;
+    }
+    @keyframes floaty {
+      0%,100% { transform: translateY(0) }
+      50% { transform: translateY(-8px) }
+    }
+    .shine {
+      background: linear-gradient(110deg, rgba(255,255,255,.06), rgba(255,255,255,0) 40%, rgba(255,255,255,.06));
+      background-size: 200% 100%;
+      animation: shine 6s linear infinite;
+    }
+    @keyframes shine {
+      0% { background-position: 180% 0 }
+      100% { background-position: -80% 0 }
+    }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+
+<body class="font-body text-white bg-ink-900 animated-gradient">
+  <!-- Navigation -->
+  <header class="sticky top-0 z-40 bg-ink-900/70 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+      <a href="#home" class="group inline-flex items-center gap-3">
+        <span class="relative inline-flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-500/20 text-indigo-300 ring-1 ring-indigo-400/30">
+          <!-- Simple M logo -->
+          <svg width="22" height="22" viewBox="0 0 24 24" class="floaty">
+            <path d="M4 18V6l4.5 6L13 6v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13 12l3-6v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <div class="leading-tight">
+          <p class="font-display font-semibold tracking-wide">Meril</p>
+          <p class="text-white/60 text-xs">Programmer</p>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="#about" class="px-4 py-2 rounded-lg text-white/80 hover:text-white hover:bg-white/5 transition">About</a>
+        <a href="#skills" class="px-4 py-2 rounded-lg text-white/80 hover:text-white hover:bg-white/5 transition">Skills</a>
+        <a href="#projects" class="px-4 py-2 rounded-lg text-white/80 hover:text-white hover:bg-white/5 transition">Projects</a>
+        <a href="#contact" class="px-4 py-2 rounded-lg text-white/80 hover:text-white hover:bg-white/5 transition">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button id="copyEmail" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-white/90 transition ring-1 ring-white/10">
+          <span>Copy email</span>
+          <span class="text-white/60">📋</span>
+        </button>
+        <button id="resumeBtn" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white transition shadow-glow">
+          <span>Resume</span>
+          <span class="text-white/90">⬇️</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-5 pt-20 pb-16 md:pt-28 md:pb-24">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/10 text-emerald-300 ring-1 ring-emerald-400/30 mb-5">
+            <span class="text-base">🧠</span>
+            <span class="text-sm">Clean code. Thoughtful UX.</span>
+          </div>
+          <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight">
+            Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400">Meril</span><br/>
+            I build reliable software
+          </h1>
+          <p class="text-white/70 mt-5 max-w-xl">
+            I turn complex problems into simple, scalable solutions. I care about performance, clarity, and creating tools people love to use.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#projects" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white text-ink-900 font-semibold hover:opacity-90 transition shadow-soft">
+              View Projects <span>🚀</span>
+            </a>
+            <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white ring-1 ring-white/10 transition">
+              Get in Touch <span>✉️</span>
+            </a>
+          </div>
+
+          <div class="mt-10 grid grid-cols-3 gap-4 max-w-md text-white/70">
+            <div class="p-4 rounded-xl bg-white/5 ring-1 ring-white/10">
+              <p class="text-2xl font-bold">5+</p>
+              <p class="text-xs">Years coding</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 ring-1 ring-white/10">
+              <p class="text-2xl font-bold">20+</p>
+              <p class="text-xs">Projects shipped</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 ring-1 ring-white/10">
+              <p class="text-2xl font-bold">100%</p>
+              <p class="text-xs">Ownership</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Decorative/Avatar Card -->
+        <div class="relative">
+          <div class="relative rounded-2xl p-6 md:p-8 bg-white/5 ring-1 ring-white/10 shadow-soft shine">
+            <div class="flex items-center gap-4">
+              <div class="h-16 w-16 rounded-xl bg-gradient-to-br from-indigo-500 to-fuchsia-500 flex items-center justify-center text-2xl">M</div>
+              <div>
+                <p class="font-semibold">Meril</p>
+                <p class="text-white/60 text-sm">Programmer & Problem Solver</p>
+              </div>
+            </div>
+
+            <div class="mt-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-white/70 text-sm">Focus</span>
+                <span class="text-sm">Web, APIs, UI</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-white/70 text-sm">Current stack</span>
+                <span class="text-sm">TypeScript, React, Go</span>
+              </div>
+            </div>
+
+            <div class="mt-6 grid grid-cols-3 gap-3">
+              <div class="rounded-xl bg-indigo-500/15 ring-1 ring-indigo-400/30 px-3 py-2 text-center text-indigo-200 text-sm">TypeScript</div>
+              <div class="rounded-xl bg-fuchsia-500/15 ring-1 ring-fuchsia-400/30 px-3 py-2 text-center text-fuchsia-200 text-sm">React</div>
+              <div class="rounded-xl bg-emerald-500/15 ring-1 ring-emerald-400/30 px-3 py-2 text-center text-emerald-200 text-sm">Go</div>
+            </div>
+          </div>
+
+          <!-- Floating shapes -->
+          <div class="absolute -right-6 -top-6 opacity-70">
+            <svg width="120" height="120" viewBox="0 0 120 120" class="floaty">
+              <defs>
+                <linearGradient id="g1" x1="0" x2="1">
+                  <stop offset="0%" stop-color="#6366F1" stop-opacity=".9"/>
+                  <stop offset="100%" stop-color="#EC4899" stop-opacity=".9"/>
+                </linearGradient>
+              </defs>
+              <circle cx="60" cy="60" r="46" fill="url(#g1)" opacity=".2"/>
+              <path d="M24 60h72M60 24v72" stroke="url(#g1)" stroke-width="2" opacity=".5"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="relative">
+    <div class="max-w-7xl mx-auto px-5 py-14 md:py-20">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="md:col-span-1">
+          <h2 class="font-display text-2xl md:text-3xl font-bold">About</h2>
+          <p class="text-white/70 mt-2">A quick intro</p>
+        </div>
+        <div class="md:col-span-2">
+          <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 md:p-8">
+            <p class="text-white/80 leading-relaxed">
+              I'm Meril, a programmer focused on clarity and impact. I build systems that are easy to maintain, quick to scale, and delightful to use.
+              I love working across the stack, from crafting smooth interfaces to optimizing backend performance.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 ring-1 ring-white/10 text-white/80 text-sm">⚡ Performance-first</span>
+              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 ring-1 ring-white/10 text-white/80 text-sm">🧩 Simple architecture</span>
+              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 ring-1 ring-white/10 text-white/80 text-sm">🤝 Team player</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="relative">
+    <div class="max-w-7xl mx-auto px-5 py-14 md:py-20">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h2 class="font-display text-2xl md:text-3xl font-bold">Skills</h2>
+          <p class="text-white/70 mt-2">What I work with</p>
+        </div>
+        <div class="md:col-span-2 grid sm:grid-cols-2 gap-6">
+          <!-- Skill card -->
+          <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
+            <div class="flex items-center justify-between">
+              <p class="font-semibold">Frontend</p>
+              <span class="text-white/60">🎨</span>
+            </div>
+            <p class="text-white/70 text-sm mt-2">TypeScript, React, UI patterns</p>
+            <div class="mt-4 h-2 rounded-full bg-white/10">
+              <div class="h-2 rounded-full bg-gradient-to-r from-indigo-400 to-fuchsia-400" style="width: 85%"></div>
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
+            <div class="flex items-center justify-between">
+              <p class="font-semibold">Backend</p>
+              <span class="text-white/60">🧱</span>
+            </div>
+            <p class="text-white/70 text-sm mt-2">Node, Go, APIs, auth</p>
+            <div class="mt-4 h-2 rounded-full bg-white/10">
+              <div class="h-2 rounded-full bg-gradient-to-r from-emerald-400 to-sky-400" style="width: 80%"></div>
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
+            <div class="flex items-center justify-between">
+              <p class="font-semibold">Databases</p>
+              <span class="text-white/60">🗄️</span>
+            </div>
+            <p class="text-white/70 text-sm mt-2">Postgres, Prisma, Redis</p>
+            <div class="mt-4 h-2 rounded-full bg-white/10">
+              <div class="h-2 rounded-full bg-gradient-to-r from-amber-400 to-rose-400" style="width: 75%"></div>
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
+            <div class="flex items-center justify-between">
+              <p class="font-semibold">Dev Experience</p>
+              <span class="text-white/60">🛠️</span>
+            </div>
+            <p class="text-white/70 text-sm mt-2">Testing, CI, docs</p>
+            <div class="mt-4 h-2 rounded-full bg-white/10">
+              <div class="h-2 rounded-full bg-gradient-to-r from-sky-400 to-indigo-400" style="width: 70%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="relative">
+    <div class="max-w-7xl mx-auto px-5 py-14 md:py-20">
+      <div class="flex items-end justify-between mb-6">
+        <div>
+          <h2 class="font-display text-2xl md:text-3xl font-bold">Projects</h2>
+          <p class="text-white/70 mt-2">A few things I built</p>
+        </div>
+        <div class="hidden sm:flex items-center gap-2">
+          <button id="filterAll" class="px-3 py-2 rounded-lg bg-white text-ink-900 text-sm font-semibold">All</button>
+          <button data-filter="frontend" class="px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 ring-1 ring-white/10 text-sm">Frontend</button>
+          <button data-filter="backend" class="px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 ring-1 ring-white/10 text-sm">Backend</button>
+          <button data-filter="tooling" class="px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 ring-1 ring-white/10 text-sm">Tooling</button>
+        </div>
+      </div>
+
+      <div id="projectGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Project Card Template -->
+        <article class="project-card rounded-2xl overflow-hidden ring-1 ring-white/10 bg-white/5 group" data-tags="frontend">
+          <div class="relative h-36 bg-gradient-to-br from-indigo-500/30 via-fuchsia-500/25 to-emerald-500/25">
+            <div class="absolute inset-0 flex items-center justify-center text-white/70">
+              <!-- Simple placeholder graphic -->
+              <svg width="90" height="60" viewBox="0 0 90 60">
+                <rect x="5" y="8" width="80" height="44" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M5 44h80" stroke="currentColor" stroke-width="2"/>
+                <circle cx="18" cy="20" r="4" fill="currentColor"/>
+                <rect x="28" y="18" width="40" height="4" rx="2" fill="currentColor" opacity=".7"/>
+                <rect x="28" y="26" width="30" height="4" rx="2" fill="currentColor" opacity=".5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-semibold">UI Component Library</h3>
+            <p class="text-white/70 text-sm mt-2">A small, accessible component set with themes and tokens.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-white/5 ring-1 ring-white/10 text-xs">React</span>
+              <span class="px-2.5 py-1 rounded-full bg-white/5 ring-1 ring-white/10 text-xs">A11y</span>
+              <span class="px-2.5 py-1 rounded-full bg-white/5 ring-1 ring-white/10 text-xs">Design</span>
+            </div>
+            <div class="mt-5 flex items-center gap-2">
+              <button class="project-view px-3 py-2 rounded-lg bg-white text-ink-900 text-sm font-semibold" data-title="UI Component Library" data-desc="A tiny, accessible design system focused on speed and clarity. Includes buttons, dialogs, and form controls with themes.">View</button>
+              <span class="text-white/50 text-sm">Frontend</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card rounded-2xl overflow-hidden ring-1 ring-white/10 bg-white/5 group" data-tags="backend">
+          <div class="relative h-36 bg-gradient-to-br from-emerald-500/25 via-sky-500/25 to-indigo-500/25">
+            <div class="absolute inset-0 flex items-center justify-center text-white/70">
+              <svg width="90" height="60" viewBox="0 0 90 60">
+                <rect x="10" y="12" width="70" height="36" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M15 20h60M15 28h60M15 36h40" stroke="currentColor" stroke-width="2" opacity=".8"/>
+              </svg>
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-semibold">API Performance Kit</h3>
+            <p class="text-white/70 text-sm mt-2">Utilities for rate limits, caching, and monitoring.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-white/5 ring-1 ring-white/10 text-xs">Go</span>
+              <span class="px-2.5 py-1 rounded-full bg-white/5 ring-1 ring-white/10 text-xs">Postgres</span>
+              <span class="px-2.5 py-1 rounded-full bg-white/5 ring-1 ring-white/10 text-xs">Redis</span>
+            </div>
+            <div class="mt-5 flex items-center gap-2">
+              <button class="project-view px-3 py-2 rounded-lg bg-white text-ink-900 text-sm font-semibold" data-title="API Performance Kit" data-desc="A focused toolkit to make APIs faster and more reliable: connection pooling, query helpers, and metrics.">View</button>
+              <span class="text-white/50 text-sm">Backend</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card rounded-2xl overflow-hidden ring-1 ring-white/10 bg-white/5 group" data-tags="tooling">
+          <div class="relative h-36 bg-gradient-to-br from-amber-500/25 via-rose-500/25 to-indigo-500/25">
+            <div class="absolute inset-0 flex items-center justify-center text-white/70">
+              <svg width="90" height="60" viewBox="0 0 90 60">
+                <path d="M18 44V16h54v28z" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M18 22h54" stroke="currentColor" stroke-width="2"/>
+                <circle cx="27" cy="19" r="2" fill="currentColor"/>
+                <circle cx="33" cy="19" r="2" fill="currentColor"/>
+                <circle cx="39" cy="19" r="2" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-semibold">DX Dashboard</h3>
+            <p class="text-white/70 text-sm mt-2">One place to track builds, tests, and coverage.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-white/5 ring-1 ring-white/10 text-xs">TypeScript</span>
+              <span class="px-2.5 py-1 rounded-full bg-white/5 ring-1 ring-white/10 text-xs">Charts</span>
+              <span class="px-2.5 py-1 rounded-full bg-white/5 ring-1 ring-white/10 text-xs">Automation</span>
+            </div>
+            <div class="mt-5 flex items-center gap-2">
+              <button class="project-view px-3 py-2 rounded-lg bg-white text-ink-900 text-sm font-semibold" data-title="DX Dashboard" data-desc="A compact dashboard for CI runs, flaky tests, and coverage trends with friendly visuals.">View</button>
+              <span class="text-white/50 text-sm">Tooling</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="relative">
+    <div class="max-w-7xl mx-auto px-5 pb-24">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h2 class="font-display text-2xl md:text-3xl font-bold">Contact</h2>
+          <p class="text-white/70 mt-2">Let's build something useful</p>
+
+          <div class="mt-6 rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center">✉️</div>
+              <div>
+                <p class="text-white/80 text-sm">Email</p>
+                <button id="mailtoBtn" class="font-semibold hover:underline">hello@meril.dev</button>
+              </div>
+            </div>
+            <div class="mt-4 flex items-center gap-3">
+              <div class="h-10 w-10 rounded-lg bg-sky-500/20 text-sky-300 flex items-center justify-center">🌐</div>
+              <div>
+                <p class="text-white/80 text-sm">Website</p>
+                <a href="#home" class="font-semibold hover:underline">meril.dev</a>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-white/50 text-xs mt-4">Note: The form is a demo that shows a success message only. Real sending isn’t supported here.</p>
+        </div>
+
+        <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
+          <form id="contactForm" class="space-y-4" autocomplete="off">
+            <div>
+              <label class="block text-white/80 text-sm mb-1">Your name</label>
+              <input required type="text" name="name" class="w-full px-4 py-3 rounded-xl bg-white/10 ring-1 ring-white/10 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-indigo-400" placeholder="Ada Lovelace"/>
+            </div>
+            <div>
+              <label class="block text-white/80 text-sm mb-1">Email</label>
+              <input required type="email" name="email" class="w-full px-4 py-3 rounded-xl bg-white/10 ring-1 ring-white/10 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-indigo-400" placeholder="you@domain.com"/>
+            </div>
+            <div>
+              <label class="block text-white/80 text-sm mb-1">Message</label>
+              <textarea required name="message" rows="4" class="w-full px-4 py-3 rounded-xl bg-white/10 ring-1 ring-white/10 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-indigo-400" placeholder="Tell me about your project..."></textarea>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="text-white/60 text-sm">Demo only</div>
+              <button type="submit" class="px-5 py-3 rounded-xl bg-white text-ink-900 font-semibold hover:opacity-90 transition">Send message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-5 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-white/50 text-sm">© <span id="year"></span> Meril. All rights reserved.</p>
+      <div class="flex items-center gap-3">
+        <a href="#projects" class="px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/80 ring-1 ring-white/10">Projects</a>
+        <button id="printResumeFooter" class="px-3 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white">Download Resume</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Modal -->
+  <div id="projectModal" class="fixed inset-0 z-50 hidden items-center justify-center p-5">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="relative w-full max-w-2xl rounded-2xl bg-ink-900 ring-1 ring-white/10 shadow-soft overflow-hidden">
+      <div class="p-6 md:p-7">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <h3 id="modalTitle" class="font-display text-2xl font-bold">Project</h3>
+            <p id="modalDesc" class="text-white/70 mt-2">Details</p>
+          </div>
+          <button id="modalClose" class="h-10 w-10 rounded-xl bg-white/5 hover:bg-white/10 text-white/80 ring-1 ring-white/10">✕</button>
+        </div>
+        <div class="mt-6 grid sm:grid-cols-3 gap-3">
+          <div class="rounded-xl bg-white/5 ring-1 ring-white/10 aspect-video"></div>
+          <div class="rounded-xl bg-white/5 ring-1 ring-white/10 aspect-video"></div>
+          <div class="rounded-xl bg-white/5 ring-1 ring-white/10 aspect-video"></div>
+        </div>
+        <div class="mt-6 flex items-center justify-end">
+          <button id="modalOk" class="px-4 py-2 rounded-lg bg-white text-ink-900 font-semibold">Nice!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resume (Printable) -->
+  <div id="resumePanel" class="fixed inset-0 z-50 hidden p-5 items-center justify-center">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="relative w-full max-w-3xl bg-white text-ink-900 rounded-2xl shadow-soft overflow-hidden">
+      <div class="p-6 md:p-10">
+        <div class="flex items-start justify-between">
+          <div>
+            <h3 class="font-display text-3xl font-bold">Meril</h3>
+            <p class="text-ink-700">Programmer</p>
+            <p class="text-ink-700/80 text-sm mt-1">hello@meril.dev • meril.dev</p>
+          </div>
+          <button id="resumeClose" class="px-3 py-2 rounded-lg bg-ink-900 text-white">Close</button>
+        </div>
+
+        <div class="mt-8 grid md:grid-cols-3 gap-8">
+          <div class="md:col-span-2 space-y-6">
+            <div>
+              <h4 class="font-semibold tracking-wide">Experience</h4>
+              <div class="mt-3 space-y-3">
+                <div>
+                  <p class="font-semibold">Software Engineer — Independent</p>
+                  <p class="text-sm text-ink-700/80">2020 — Present</p>
+                  <p class="text-sm mt-1">Built and shipped web apps, APIs, and internal tools for startups and small teams.</p>
+                </div>
+                <div>
+                  <p class="font-semibold">Developer — Studio</p>
+                  <p class="text-sm text-ink-700/80">2018 — 2020</p>
+                  <p class="text-sm mt-1">Created components, improved build times, and introduced helpful testing practices.</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="font-semibold tracking-wide">Selected Projects</h4>
+              <ul class="mt-3 list-disc list-inside text-sm space-y-1">
+                <li>UI Component Library — small, fast, accessible</li>
+                <li>API Performance Kit — caching and metrics</li>
+                <li>DX Dashboard — CI insights in one place</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <div>
+              <h4 class="font-semibold tracking-wide">Skills</h4>
+              <ul class="mt-3 text-sm space-y-1">
+                <li>TypeScript, React</li>
+                <li>Node, Go, Postgres</li>
+                <li>Testing, CI, Docs</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold tracking-wide">Links</h4>
+              <ul class="mt-3 text-sm space-y-1">
+                <li>Website: meril.dev</li>
+                <li>Email: hello@meril.dev</li>
+              </ul>
+            </div>
+            <button id="printResume" class="w-full mt-2 px-4 py-3 rounded-lg bg-ink-900 text-white font-semibold">Print / Save as PDF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden">
+    <div class="px-4 py-3 rounded-xl bg-emerald-500 text-ink-900 font-semibold shadow-soft">Done!</div>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Copy email
+    const copyBtn = document.getElementById('copyEmail');
+    copyBtn?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('hello@meril.dev');
+        showToast('Email copied!');
+      } catch {
+        showToast('Could not copy email');
+      }
+    });
+
+    // Mailto open
+    const mailtoBtn = document.getElementById('mailtoBtn');
+    mailtoBtn.addEventListener('click', () => {
+      window.open('mailto:hello@meril.dev', '_self');
+    });
+
+    // Resume panel controls
+    const resumePanel = document.getElementById('resumePanel');
+    const resumeBtn = document.getElementById('resumeBtn');
+    const resumeClose = document.getElementById('resumeClose');
+    const printResume = document.getElementById('printResume');
+    const printResumeFooter = document.getElementById('printResumeFooter');
+
+    const openResume = () => { resumePanel.classList.remove('hidden'); resumePanel.classList.add('flex'); };
+    const closeResume = () => { resumePanel.classList.add('hidden'); resumePanel.classList.remove('flex'); };
+
+    resumeBtn.addEventListener('click', openResume);
+    resumeClose.addEventListener('click', closeResume);
+    printResume.addEventListener('click', () => window.print());
+    printResumeFooter.addEventListener('click', openResume);
+    resumePanel.addEventListener('click', (e) => {
+      if (e.target === resumePanel) closeResume();
+    });
+
+    // Project modal
+    const modal = document.getElementById('projectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalClose = document.getElementById('modalClose');
+    const modalOk = document.getElementById('modalOk');
+
+    const openModal = (title, desc) => {
+      modalTitle.textContent = title;
+      modalDesc.textContent = desc;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    };
+    const closeModal = () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    };
+
+    document.querySelectorAll('.project-view').forEach(btn => {
+      btn.addEventListener('click', () => {
+        openModal(btn.dataset.title || 'Project', btn.dataset.desc || '');
+      });
+    });
+    modalClose.addEventListener('click', closeModal);
+    modalOk.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Project filtering
+    const grid = document.getElementById('projectGrid');
+    const allBtn = document.getElementById('filterAll');
+    const filterBtns = document.querySelectorAll('[data-filter]');
+
+    const setActiveFilter = (key) => {
+      // Update buttons visual state
+      if (key === 'all') {
+        allBtn.className = 'px-3 py-2 rounded-lg bg-white text-ink-900 text-sm font-semibold';
+        filterBtns.forEach(b => b.className = 'px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 ring-1 ring-white/10 text-sm');
+      } else {
+        allBtn.className = 'px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 ring-1 ring-white/10 text-sm';
+        filterBtns.forEach(b => {
+          if (b.dataset.filter === key) {
+            b.className = 'px-3 py-2 rounded-lg bg-white text-ink-900 text-sm font-semibold';
+          } else {
+            b.className = 'px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 ring-1 ring-white/10 text-sm';
+          }
+        });
+      }
+    };
+
+    const filterProjects = (key) => {
+      const cards = grid.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        const tags = card.getAttribute('data-tags') || '';
+        const show = key === 'all' ? true : tags.includes(key);
+        card.style.display = show ? '' : 'none';
+      });
+      setActiveFilter(key);
+    };
+
+    allBtn.addEventListener('click', () => filterProjects('all'));
+    filterBtns.forEach(btn => btn.addEventListener('click', () => filterProjects(btn.dataset.filter)));
+
+    // Contact form (demo)
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      showToast('Message sent! (demo)');
+      form.reset();
+    });
+
+    // Toast helper
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    function showToast(text) {
+      toast.querySelector('div').textContent = text;
+      toast.classList.remove('hidden');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 1800);
+    }
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97d5d3d34743bc3d',t:'MTc1NzU3OTY4Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
